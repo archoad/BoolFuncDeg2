@@ -1,0 +1,160 @@
+\documentclass[a4paper,10pt,final, fleqn]{book}
+
+\usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,factor=1100,stretch=10,shrink=10]{microtype}
+\usepackage[french]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage[left=1.5cm, right=1.5cm, top=1.5cm, bottom=1.5cm]{geometry}
+\usepackage[pdftex]{xcolor}
+\usepackage[pdftex]{hyperref}
+\usepackage[pdftex]{graphicx}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{array}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.8}
+
+\newcommand{\NOT}{\neg}
+\newcommand{\AND}{\wedge}
+\newcommand{\XOR}{\veebar}
+\newcommand{\OR}{\vee}
+
+\begin{document}
+
+\pgfplotsset{every axis/.style={
+	height=0.45\textwidth, width=0.45\textwidth,
+	trim axis left, trim axis right,
+	view={-20}{20}, grid=minor, z buffer=sort, enlargelimits=upper,
+	xlabel={$x$}, ylabel={$y$},
+	%colormap={summap}{ color=(blue) color=(violet) color=(orange) color=(red) },
+	scatter/use mapped color={draw=mapped color!60, very thin, fill=mapped color}
+}}
+\pgfplotsset{plot3d/.style={only marks, scatter, mark=cube*, mark size=4, shader=interp, patch type=rectangle}}
+
+
+
+\begin{tabular}{c c}
+
+\begin{tikzpicture}
+	\begin{axis} [ zlabel={$f(x,y) = \textrm{FALSE}$} ]
+		\addplot3 [plot3d] file {data/bool_f0.dat};
+	\end{axis}
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+	\begin{axis} [ zlabel={$f(x,y) = x \AND y$} ]
+		\addplot3 [plot3d] file {data/bool_f1.dat};
+	\end{axis}
+\end{tikzpicture}
+\tabularnewline
+
+
+\begin{tikzpicture}
+	\begin{axis} [ zlabel={$f(x,y) = x \AND \NOT y$} ]
+		\addplot3 [plot3d] file {data/bool_f2.dat};
+	\end{axis}
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+	\begin{axis} [ zlabel={$f(x,y) = x$} ]
+		\addplot3 [plot3d] file {data/bool_f3.dat};
+	\end{axis}
+\end{tikzpicture}
+\tabularnewline
+
+
+\begin{tikzpicture}
+	\begin{axis} [ zlabel={$f(x,y) = \NOT x \AND y$} ]
+		\addplot3 [plot3d] file {data/bool_f4.dat};
+	\end{axis}
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+	\begin{axis} [ zlabel={$f(x,y) = y$} ]
+		\addplot3 [plot3d] file {data/bool_f5.dat};
+	\end{axis}
+\end{tikzpicture}
+\tabularnewline
+
+\end{tabular}
+
+
+\begin{tabular}{c c}
+
+\begin{tikzpicture}
+	\begin{axis} [ zlabel={$f(x,y) = x \XOR y$} ]
+		\addplot3 [plot3d] file {data/bool_f6.dat};
+	\end{axis}
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+	\begin{axis} [ zlabel={$f(x,y) = x \OR y$} ]
+		\addplot3 [plot3d] file {data/bool_f7.dat};
+	\end{axis}
+\end{tikzpicture}
+\tabularnewline
+
+
+\begin{tikzpicture}
+	\begin{axis} [ zlabel={$f(x,y) = \NOT(x \OR y)$} ]
+		\addplot3 [plot3d] file {data/bool_f8.dat};
+	\end{axis}
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+	\begin{axis} [ zlabel={$f(x,y) = \NOT(x \XOR y)$} ]
+		\addplot3 [plot3d] file {data/bool_f9.dat};
+	\end{axis}
+\end{tikzpicture}
+\tabularnewline
+
+
+\begin{tikzpicture}
+	\begin{axis} [ zlabel={$f(x,y) = \NOT y$} ]
+		\addplot3 [plot3d] file {data/bool_f10.dat};
+	\end{axis}
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+	\begin{axis} [ zlabel={$f(x,y) = x \OR \NOT y)$} ]
+		\addplot3 [plot3d] file {data/bool_f11.dat};
+	\end{axis}
+\end{tikzpicture}
+\tabularnewline
+
+\end{tabular}
+
+
+\begin{tabular}{c c}
+
+\begin{tikzpicture}
+	\begin{axis} [ zlabel={$f(x,y) = \NOT x$} ]
+		\addplot3 [plot3d] file {data/bool_f12.dat};
+	\end{axis}
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+	\begin{axis} [ zlabel={$f(x,y) = x \NOT \OR y$} ]
+		\addplot3 [plot3d] file {data/bool_f13.dat};
+	\end{axis}
+\end{tikzpicture}
+\tabularnewline
+
+
+\begin{tikzpicture}
+	\begin{axis} [ zlabel={$f(x,y) = \NOT(x \AND y)$} ]
+		\addplot3 [plot3d] file {data/bool_f14.dat};
+	\end{axis}
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+	\begin{axis} [ zlabel={$f(x,y) = \textrm{TRUE}$} ]
+		\addplot3 [plot3d] file {data/bool_f15.dat};
+	\end{axis}
+\end{tikzpicture}
+\tabularnewline
+
+\end{tabular}
+
+\end{document}
